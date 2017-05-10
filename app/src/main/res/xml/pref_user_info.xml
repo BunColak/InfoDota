@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:defaultValue="@string/pref_user_id_def"
+        android:key="@string/pref_user_id_key"
+        android:title="User ID"/>
+    <EditTextPreference
+        android:defaultValue="@string/pref_user_zero_def"
+        android:key="@string/pref_user_pic_key"
+        android:title="User Pic"/>
+    <EditTextPreference
+        android:defaultValue="@string/pref_user_zero_def"
+        android:key="@string/pref_user_name_key"
+        android:title="User Name"/>
+    <EditTextPreference
+        android:defaultValue="@string/pref_user_zero_def"
+        android:key="@string/pref_user_wins_key"
+        android:title="Wins"
+        android:editable="false"/>
+    <EditTextPreference
+        android:defaultValue="@string/pref_user_zero_def"
+        android:key="@string/pref_user_losses_key"
+        android:title="Losses"
+        android:editable="false"/>
+    <EditTextPreference
+        android:defaultValue="@string/pref_user_zero_def"
+        android:key="@string/pref_user_solo_mmr_key"
+        android:title="MMR"
+        android:editable="false"/>
+    <EditTextPreference
+        android:defaultValue="@string/pref_user_zero_def"
+        android:key="@string/pref_user_est_mmr_key"
+        android:title="Estimated MMR"
+        android:editable="false"/>
+
+
+</PreferenceScreen>

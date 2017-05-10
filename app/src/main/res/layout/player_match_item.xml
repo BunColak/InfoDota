@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:elevation="3dp"
+        android:layout_margin="8dp"
+        android:background="@color/colorPrimaryMiddle">
+
+        <!--Hero image-->
+        <ImageView
+            android:id="@+id/hero_image"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/axe_full"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"/>
+
+        <!--Hero name and Radiant/Dire-->
+        <TextView
+            android:id="@+id/hero_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Keeper Of The Light"
+            android:scrollHorizontally="false"
+            android:textColor="@color/colorPrimaryLight"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/hero_image"
+            app:layout_constraintLeft_toLeftOf="@+id/hero_image" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerSide"
+            android:textColor="@color/colorGrey"
+            android:text="@string/radiant"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/hero_name"
+            app:layout_constraintLeft_toLeftOf="@+id/hero_name" />
+
+        <!--Match Id and game mode-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/matchIdTV"
+            tools:text="21301851"
+            android:textColor="@color/colorPrimaryLight"
+            app:layout_constraintTop_toTopOf="@+id/hero_image"
+            android:layout_marginTop="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/hero_image"
+            app:layout_constraintRight_toLeftOf="@+id/match_win"
+            app:layout_constraintHorizontal_bias="0.5" />
+        <TextView
+            android:id="@+id/gameMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Draft / Ranked"
+            android:textColor="@color/colorGrey"
+            app:layout_constraintLeft_toLeftOf="@+id/matchIdTV"
+            app:layout_constraintTop_toBottomOf="@+id/matchIdTV" />
+
+        <!--Match duration and its start time-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/duration_value"
+            android:textColor="@color/colorWhite"
+            tools:text="31:54"
+            app:layout_constraintTop_toTopOf="@+id/hero_name"
+            android:layout_marginTop="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/matchIdTV"
+            android:layout_marginLeft="0dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            tools:text="5 days ago"
+            android:textColor="@color/colorGrey"
+            app:layout_constraintTop_toBottomOf="@+id/duration_value"
+            app:layout_constraintLeft_toLeftOf="@+id/duration_value" />
+
+        <!--Did player won the match and the skill level-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/match_win"
+            tools:text="Win"
+            android:textColor="@color/colorGreen"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@+id/skill"
+            app:layout_constraintBottom_toTopOf="@+id/skill"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="0dp" />
+        <TextView
+            android:id="@+id/skill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal Skill"
+            android:textColor="@color/colorGrey"
+            app:layout_constraintBottom_toBottomOf="@+id/gameMode"
+            app:layout_constraintLeft_toRightOf="@+id/gameMode"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!--KDA and its seperators-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/kills"
+            android:textColor="@color/colorGreen"
+            tools:text="8"
+            android:textSize="20sp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/skill"
+            app:layout_constraintBottom_toBottomOf="@+id/date"
+            android:layout_marginBottom="4dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/deaths"
+            android:textColor="@color/colorRed"
+            tools:text="3"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@+id/kills"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/kills" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/assists"
+            android:textColor="@color/colorWhite"
+            tools:text="10"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@+id/deaths"
+            app:layout_constraintLeft_toRightOf="@+id/deaths"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/colorGrey"
+            android:id="@+id/kd_div"
+            app:layout_constraintLeft_toRightOf="@+id/kills"
+            app:layout_constraintTop_toTopOf="@+id/kills"
+            app:layout_constraintBottom_toBottomOf="@+id/kills"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            app:layout_constraintVertical_bias="0.6"
+            android:rotation="15"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/colorGrey"
+            android:id="@+id/da_div"
+            app:layout_constraintLeft_toRightOf="@+id/deaths"
+            app:layout_constraintTop_toTopOf="@+id/deaths"
+            app:layout_constraintBottom_toBottomOf="@+id/deaths"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:rotation="15"/>
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

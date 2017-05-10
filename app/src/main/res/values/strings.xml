@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">OpenDota</string>
+    <string name="winrate">WINRATE</string>
+    <string name="wins">WINS</string>
+    <string name="losses">LOSSES</string>
+    <string name="solo_mmr">SOLO MMR</string>
+    <string name="est_mmr">ESTIMATED MMR</string>
+    <string name="radiant">Radiant</string>
+    <string name="dire">Dire</string>
+    <string name="duration">Duration</string>
+    <string name="win">Win</string>
+    <string name="loss">Loss</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_user_id_key">user_id</string>
+    <string name="pref_user_id_def">82570497</string>
+    <string name="pref_user_wins_key">wins</string>
+    <string name="pref_user_losses_key">losses</string>
+    <string name="pref_user_solo_mmr_key">solo_mmr</string>
+    <string name="pref_user_est_mmr_key">est_mmr</string>
+    <string name="pref_user_zero_def">0</string>
+    <string name="pref_user_pic_key">prof_pic</string>
+    <string name="pref_user_name_key">user_name</string>
+    <string name="title_activity_navigation__drawer_">Navigation_Drawer_Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
