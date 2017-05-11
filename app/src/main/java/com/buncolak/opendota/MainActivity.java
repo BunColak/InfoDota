@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         userPic = (ImageView)findViewById(R.id.userProfilePicture);
         mSwipeRefresher = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh);
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
 
         UserDBHelper helper = new UserDBHelper(this);
         odDB = helper.getWritableDatabase();
