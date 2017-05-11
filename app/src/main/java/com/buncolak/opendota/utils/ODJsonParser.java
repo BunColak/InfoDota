@@ -53,7 +53,6 @@ public class ODJsonParser {
         editor.putString(context.getString(R.string.pref_user_pic_key),userPic);
         editor.putString(context.getString(R.string.pref_user_solo_mmr_key),soloMMR);
         editor.putString(context.getString(R.string.pref_user_est_mmr_key),estMMR);
-
         editor.apply();
     }
 

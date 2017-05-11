@@ -7,7 +7,7 @@
     <EditTextPreference
         android:defaultValue="@string/pref_user_zero_def"
         android:key="@string/pref_user_pic_key"
-        android:title="User Pic"/>
+        android:title="User Pic" />
     <EditTextPreference
         android:defaultValue="@string/pref_user_zero_def"
         android:key="@string/pref_user_name_key"

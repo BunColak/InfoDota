@@ -15,7 +15,7 @@
         android:layout_width="70dp"
         android:layout_height="0dp"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"
+        app:civ_border_color="@color/colorPrimaryLight"
         android:layout_marginLeft="8dp"
         android:paddingTop="12dp"
         android:paddingBottom="28dp"
