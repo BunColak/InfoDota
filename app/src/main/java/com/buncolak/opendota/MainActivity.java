@@ -14,10 +14,12 @@ import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,7 +37,7 @@ import java.net.URL;
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>,
-        SharedPreferences.OnSharedPreferenceChangeListener{
+        SharedPreferences.OnSharedPreferenceChangeListener,PlayerMatchAdapter.MatchClickListener{
 
     static final String TAG = MainActivity.class.getSimpleName();
     private static final int LOADER_ID = 322;
@@ -65,19 +67,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         userPic = (ImageView)findViewById(R.id.userProfilePicture);
         mSwipeRefresher = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh);
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
 
         UserDBHelper helper = new UserDBHelper(this);
         odDB = helper.getWritableDatabase();
 
         cursor = getAllMatches();
 
-        playerMatchAdapter = new PlayerMatchAdapter(this,cursor);
+        playerMatchAdapter = new PlayerMatchAdapter(this,cursor,this);
         playerMatchesRV = (RecyclerView)findViewById(R.id.playerMatchesRV);
         playerMatchesRV.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         playerMatchesRV.setLayoutManager(linearLayoutManager);
         playerMatchesRV.setAdapter(playerMatchAdapter);
+
 
         final Bundle bundle = null;
         callbacks = MainActivity.this;
@@ -247,5 +252,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             loadPlayerInfo();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMatchClick(int position) {
+        Intent intent = new Intent(this,MatchDetailsActivity.class);
+        startActivity(intent);
     }
 }

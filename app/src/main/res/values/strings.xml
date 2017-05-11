@@ -31,4 +31,6 @@
 
     <string name="menu_refresh">Refresh</string>
     <string name="menu_user_info">User Info</string>
+    <string name="title_activity_match_details">MatchDetailsActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

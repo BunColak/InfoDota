@@ -28,8 +28,15 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
     Cursor mCursor;
     Context mContext;
 
-    public PlayerMatchAdapter(Context context,Cursor cursor){
+    private final MatchClickListener matchClickListener;
+
+    public interface MatchClickListener{
+        void onMatchClick(int position);
+    }
+
+    public PlayerMatchAdapter(Context context,Cursor cursor, MatchClickListener listener){
         mCursor = cursor;
+        matchClickListener = listener;
         mContext = context;
     }
 
@@ -122,7 +129,7 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
             this.notifyDataSetChanged();
     }
 
-    class PlayerMatchViewHolder extends RecyclerView.ViewHolder{
+    class PlayerMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView matchId, heroName, playerSide, gameMode, duration, dateTv, winTv;
         TextView kills,deaths,assists;
@@ -141,6 +148,14 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
             deaths = (TextView)itemView.findViewById(R.id.deaths);
             assists = (TextView)itemView.findViewById(R.id.assists);
             heroImage = (ImageView)itemView.findViewById(R.id.hero_image);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            matchClickListener.onMatchClick(position);
         }
     }
 }

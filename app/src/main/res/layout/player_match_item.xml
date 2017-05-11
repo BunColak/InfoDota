@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             tools:text="Keeper Of The Light"
             android:scrollHorizontally="false"
-            android:textColor="@color/colorPrimaryLight"
+            android:textColor="@color/colorSecondary"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/hero_image"
             app:layout_constraintLeft_toLeftOf="@+id/hero_image" />
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playerSide"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorGray"
             android:text="@string/radiant"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/hero_name"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/matchIdTV"
             tools:text="21301851"
-            android:textColor="@color/colorPrimaryLight"
+            android:textColor="@color/colorSecondary"
             app:layout_constraintTop_toTopOf="@+id/hero_image"
             android:layout_marginTop="0dp"
             app:layout_constraintLeft_toRightOf="@+id/hero_image"
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="All Draft / Ranked"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorGray"
             app:layout_constraintLeft_toLeftOf="@+id/matchIdTV"
             app:layout_constraintTop_toBottomOf="@+id/matchIdTV" />
 
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/date"
             tools:text="5 days ago"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorGray"
             app:layout_constraintTop_toBottomOf="@+id/duration_value"
             app:layout_constraintLeft_toLeftOf="@+id/duration_value" />
 
@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Normal Skill"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorGray"
             app:layout_constraintBottom_toBottomOf="@+id/gameMode"
             app:layout_constraintLeft_toRightOf="@+id/gameMode"
             android:layout_marginLeft="8dp"
@@ -149,7 +149,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="0dp"
-            android:background="@color/colorGrey"
+            android:background="@color/colorGray"
             android:id="@+id/kd_div"
             app:layout_constraintLeft_toRightOf="@+id/kills"
             app:layout_constraintTop_toTopOf="@+id/kills"
@@ -161,7 +161,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="0dp"
-            android:background="@color/colorGrey"
+            android:background="@color/colorGray"
             android:id="@+id/da_div"
             app:layout_constraintLeft_toRightOf="@+id/deaths"
             app:layout_constraintTop_toTopOf="@+id/deaths"
