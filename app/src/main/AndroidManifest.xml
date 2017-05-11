@@ -19,6 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity" />
+        <activity
+            android:name=".MatchDetailsActivity"
+            android:label="@string/title_activity_match_details"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
