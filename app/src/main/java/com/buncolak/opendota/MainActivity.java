@@ -16,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -255,8 +256,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    public void onMatchClick(int position) {
+    public void onMatchClick(long matchId) {
         Intent intent = new Intent(this,MatchDetailsActivity.class);
+        intent.putExtra(getString(R.string.intent_extra_match_id),matchId);
         startActivity(intent);
     }
 }

@@ -13,9 +13,7 @@ import android.widget.TextView;
 
 import com.buncolak.opendota.data.HeroValues;
 import com.buncolak.opendota.data.MatchesDBContract;
-import com.buncolak.opendota.MainActivity;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,7 +29,7 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
     private final MatchClickListener matchClickListener;
 
     public interface MatchClickListener{
-        void onMatchClick(int position);
+        void onMatchClick(long matchId);
     }
 
     public PlayerMatchAdapter(Context context,Cursor cursor, MatchClickListener listener){
@@ -43,7 +41,7 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
     @Override
     public PlayerMatchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        int layoutID = R.layout.player_match_item;
+        int layoutID = R.layout.layout_player_match_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         View itemView = inflater.inflate(layoutID,parent,false);
 
@@ -154,8 +152,7 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
 
         @Override
         public void onClick(View v) {
-            int position = getAdapterPosition();
-            matchClickListener.onMatchClick(position);
+            matchClickListener.onMatchClick(Long.valueOf(matchId.getText().toString()));
         }
     }
 }

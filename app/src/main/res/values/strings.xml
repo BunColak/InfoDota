@@ -33,4 +33,6 @@
     <string name="menu_user_info">User Info</string>
     <string name="title_activity_match_details">MatchDetailsActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="intent_extra_match_id">match_id</string>
 </resources>

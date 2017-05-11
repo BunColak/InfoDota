@@ -37,7 +37,7 @@
 
                 <include
                     android:id="@+id/user_info"
-                    layout="@layout/user_info_layout"
+                    layout="@layout/layout_user_info"
                     android:layout_width="match_parent"
                     android:layout_height="115dp"
                     android:layout_marginTop="?attr/actionBarSize"
