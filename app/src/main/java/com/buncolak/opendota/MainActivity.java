@@ -1,10 +1,12 @@
 package com.buncolak.opendota;
 
+import android.app.Application;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
@@ -13,9 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +31,7 @@ import com.buncolak.opendota.data.MatchesDBContract;
 import com.buncolak.opendota.data.UserDBHelper;
 import com.buncolak.opendota.utils.NetworkUtils;
 import com.buncolak.opendota.utils.ODJsonParser;
+import com.squareup.leakcanary.LeakCanary;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -56,6 +61,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Application opendota = getApplication();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(opendota);
+
         setContentView(R.layout.activity_main);
 
         userNameTV = (TextView)findViewById(R.id.userNameTV);
@@ -255,8 +268,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    public void onMatchClick(int position) {
+    public void onMatchClick(long matchId) {
         Intent intent = new Intent(this,MatchDetailsActivity.class);
+        intent.putExtra(getString(R.string.intent_extra_match_id),matchId);
         startActivity(intent);
     }
 }

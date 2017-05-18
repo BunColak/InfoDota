@@ -27,4 +27,8 @@
         <item name="android:colorBackground">@color/colorPrimaryMidDark</item>
     </style>
 
+    <style name="ScrollStyle">
+        <item name="colorPrimary">@color/colorSecondary</item>
+    </style>
+
 </resources>

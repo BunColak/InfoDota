@@ -160,7 +160,7 @@
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:background="@color/colorGray"
+        android:background="@color/colorDivider"
         app:layout_constraintBottom_toBottomOf="@+id/solo_mmr_value"
         app:layout_constraintLeft_toRightOf="@+id/userNameTV"
         app:layout_constraintTop_toTopOf="@+id/wins_label"
