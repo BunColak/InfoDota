@@ -31,8 +31,24 @@
 
     <string name="menu_refresh">Refresh</string>
     <string name="menu_user_info">User Info</string>
-    <string name="title_activity_match_details">MatchDetailsActivity</string>
+    <string name="title_activity_match_details">Match</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <string name="intent_extra_match_id">match_id</string>
+
+    <string name="match_details_player_label"><u>PLAYER</u></string>
+    <string name="match_details_player_level"><u>LVL</u></string>
+    <string name="match_details_player_kill"><u>K</u></string>
+    <string name="match_details_player_death"><u>D</u></string>
+    <string name="match_details_player_assist"><u>A</u></string>
+    <string name="match_details_player_gpm"><u>GPM</u></string>
+    <string name="match_details_player_xpm"><u>XPM</u></string>
+    <string name="match_details_player_lh"><u>LH</u></string>
+    <string name="match_details_player_dn"><u>DN</u></string>
+    <string name="match_details_player_hd"><u>HD</u></string>
+    <string name="match_details_player_hh"><u>HH</u></string>
+    <string name="match_details_player_td"><u>TD</u></string>
+    <string name="match_details_player_gold"><u>GOLD</u></string>
+    <string name="match_details_player_items"><u>ITEMS</u></string>
+
 </resources>

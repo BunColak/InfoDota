@@ -2,63 +2,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="125dp"
-        android:elevation="3dp"
         android:layout_margin="8dp"
-        android:background="@color/colorPrimaryMiddle">
+        android:background="@color/colorPrimaryMiddle"
+        android:elevation="3dp">
 
         <!--Hero image-->
         <ImageView
             android:id="@+id/hero_image"
             android:layout_width="80dp"
             android:layout_height="45dp"
-            app:srcCompat="@drawable/axe_full"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="18dp"
             app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"/>
+            app:srcCompat="@drawable/axe_full" />
 
         <!--Hero name and Radiant/Dire-->
         <TextView
             android:id="@+id/hero_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Keeper Of The Light"
+            android:layout_marginTop="8dp"
             android:scrollHorizontally="false"
             android:textColor="@color/colorSecondary"
-            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="@+id/hero_image"
             app:layout_constraintTop_toBottomOf="@+id/hero_image"
-            app:layout_constraintLeft_toLeftOf="@+id/hero_image" />
+            tools:text="Keeper Of The Light" />
+
         <TextView
+            android:id="@+id/playerSide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/playerSide"
-            android:textColor="@color/colorGray"
             android:text="@string/radiant"
+            android:textColor="@color/colorGray"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/hero_name"
-            app:layout_constraintLeft_toLeftOf="@+id/hero_name" />
+            app:layout_constraintLeft_toLeftOf="@+id/hero_name"
+            app:layout_constraintTop_toBottomOf="@+id/hero_name" />
 
         <!--Match Id and game mode-->
         <TextView
+            android:id="@+id/matchIdTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/matchIdTV"
-            tools:text="21301851"
-            android:textColor="@color/colorSecondary"
-            app:layout_constraintTop_toTopOf="@+id/hero_image"
             android:layout_marginTop="0dp"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toRightOf="@+id/hero_image"
             app:layout_constraintRight_toLeftOf="@+id/match_win"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintTop_toTopOf="@+id/hero_image"
+            tools:text="21301851" />
+
         <TextView
             android:id="@+id/gameMode"
             android:layout_width="wrap_content"
@@ -70,104 +72,110 @@
 
         <!--Match duration and its start time-->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/duration_value"
-            android:textColor="@color/colorWhite"
-            tools:text="31:54"
-            app:layout_constraintTop_toTopOf="@+id/hero_name"
-            android:layout_marginTop="0dp"
-            app:layout_constraintLeft_toLeftOf="@+id/matchIdTV"
-            android:layout_marginLeft="0dp" />
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintLeft_toLeftOf="@+id/matchIdTV"
+            app:layout_constraintTop_toTopOf="@+id/hero_name"
+            tools:text="31:54" />
+
+        <TextView
             android:id="@+id/date"
-            tools:text="5 days ago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="@color/colorGray"
+            app:layout_constraintLeft_toLeftOf="@+id/duration_value"
             app:layout_constraintTop_toBottomOf="@+id/duration_value"
-            app:layout_constraintLeft_toLeftOf="@+id/duration_value" />
+            tools:text="5 days ago" />
 
         <!--Did player won the match and the skill level-->
         <TextView
+            android:id="@+id/match_win"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/match_win"
-            tools:text="Win"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
             android:textColor="@color/colorGreen"
             android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="@+id/skill"
             app:layout_constraintBottom_toTopOf="@+id/skill"
-            android:layout_marginLeft="0dp"
-            android:layout_marginBottom="0dp" />
+            app:layout_constraintLeft_toLeftOf="@+id/skill"
+            tools:text="Win" />
+
         <TextView
             android:id="@+id/skill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:text="Normal Skill"
             android:textColor="@color/colorGray"
             app:layout_constraintBottom_toBottomOf="@+id/gameMode"
             app:layout_constraintLeft_toRightOf="@+id/gameMode"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent" />
 
         <!--KDA and its seperators-->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/kills"
-            android:textColor="@color/colorGreen"
-            tools:text="8"
-            android:textSize="20sp"
-            android:layout_marginLeft="0dp"
-            app:layout_constraintLeft_toLeftOf="@+id/skill"
-            app:layout_constraintBottom_toBottomOf="@+id/date"
-            android:layout_marginBottom="4dp" />
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/deaths"
-            android:textColor="@color/colorRed"
-            tools:text="3"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="0dp"
+            android:textColor="@color/colorGreen"
             android:textSize="20sp"
-            app:layout_constraintLeft_toRightOf="@+id/kills"
+            app:layout_constraintBottom_toBottomOf="@+id/date"
+            app:layout_constraintLeft_toLeftOf="@+id/skill"
+            tools:text="8" />
+
+        <TextView
+            android:id="@+id/deaths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/kills" />
+            android:textColor="@color/colorRed"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/kills"
+            app:layout_constraintLeft_toRightOf="@+id/kills"
+            tools:text="3" />
+
         <TextView
+            android:id="@+id/assists"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/assists"
-            android:textColor="@color/colorWhite"
-            tools:text="10"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@+id/deaths"
-            app:layout_constraintLeft_toRightOf="@+id/deaths"
             android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@+id/deaths"
+            app:layout_constraintTop_toTopOf="@+id/deaths"
+            tools:text="10" />
+
         <View
+            android:id="@+id/kd_div"
             android:layout_width="1dp"
             android:layout_height="0dp"
-            android:background="@color/colorGray"
-            android:id="@+id/kd_div"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:background="@color/colorDivider"
+            android:rotation="15"
+            app:layout_constraintBottom_toBottomOf="@+id/kills"
             app:layout_constraintLeft_toRightOf="@+id/kills"
             app:layout_constraintTop_toTopOf="@+id/kills"
-            app:layout_constraintBottom_toBottomOf="@+id/kills"
-            android:layout_marginLeft="3dp"
-            android:layout_marginStart="3dp"
-            app:layout_constraintVertical_bias="0.6"
-            android:rotation="15"/>
+            app:layout_constraintVertical_bias="0.6" />
+
         <View
+            android:id="@+id/da_div"
             android:layout_width="1dp"
             android:layout_height="0dp"
-            android:background="@color/colorGray"
-            android:id="@+id/da_div"
-            app:layout_constraintLeft_toRightOf="@+id/deaths"
-            app:layout_constraintTop_toTopOf="@+id/deaths"
-            app:layout_constraintBottom_toBottomOf="@+id/deaths"
             android:layout_marginLeft="3dp"
             android:layout_marginStart="3dp"
-            android:rotation="15"/>
+            android:background="@color/colorDivider"
+            android:rotation="15"
+            app:layout_constraintBottom_toBottomOf="@+id/deaths"
+            app:layout_constraintLeft_toRightOf="@+id/deaths"
+            app:layout_constraintTop_toTopOf="@+id/deaths" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

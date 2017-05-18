@@ -16,7 +16,11 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorGreen">#66bb6a</color>
     <color name="colorRed">#ff4c49</color>
+    <color name="colorGold">#FFD700</color>
     <color name="colorAccent">#1a2b3d</color>
+
+    <color name="colorDivider">#26ffffff</color>
+
 
 
 

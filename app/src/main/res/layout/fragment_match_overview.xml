@@ -1,11 +1,2535 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/match_overview_id"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Overview"/>
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_main_match_details"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
 
-</LinearLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/match_details_win"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:shadowColor="@color/colorGreen"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="6"
+            android:gravity="center"
+            android:text="Radiant Victory"
+            android:textColor="@color/colorGreen"
+            android:textSize="36sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/match_details_top_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/colorPrimaryMidDark"
+            android:elevation="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/match_details_win">
+
+            <TextView
+                android:id="@+id/match_details_game_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="ALL DRAFT"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/match_details_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="31:54"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/match_details_game_mode"
+                app:layout_constraintRight_toRightOf="@+id/match_details_game_mode"
+                app:layout_constraintTop_toBottomOf="@+id/match_details_game_mode" />
+
+            <TextView
+                android:id="@+id/match_details_radiant_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="42"
+                android:textColor="@color/colorGreen"
+                android:textSize="42sp"
+                app:layout_constraintBottom_toBottomOf="@+id/match_details_duration"
+                app:layout_constraintRight_toLeftOf="@+id/match_details_game_mode"
+                app:layout_constraintTop_toTopOf="@+id/match_details_game_mode" />
+
+            <TextView
+                android:id="@+id/match_details_dire_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="16"
+                android:textColor="@color/colorRed"
+                android:textSize="42sp"
+                app:layout_constraintBottom_toBottomOf="@+id/match_details_duration"
+                app:layout_constraintLeft_toRightOf="@+id/match_details_game_mode"
+                app:layout_constraintTop_toTopOf="@+id/match_details_game_mode" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/radiant_players_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Radiant - Overview"
+            android:textSize="16sp"
+            android:textColor="@color/colorGreen"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/match_details_top_info"/>
+
+        <!-- Radiant Side !-->
+        <HorizontalScrollView
+            android:id="@+id/radiant_stats_scroll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:scrollbarSize="1dp"
+            android:scrollbarThumbHorizontal="@drawable/custom_scrollbar2"
+            android:fadeScrollbars="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radiant_players_label">
+
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryMidDark"
+                android:columnCount="16"
+                android:elevation="4dp"
+                android:rowCount="7">
+
+                <TextView
+                    android:id="@+id/match_details_radiant_player"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_label"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_lvl_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_level"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_kill_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_kill"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_death_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_death"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_assist_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_assist"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_gpm_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_gpm"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_xpm_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_xpm"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_lh_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_lh"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_DN_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_dn"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_HD_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_hd"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_HH_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_hh"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_TD_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_td"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_gold_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_gold"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/match_details_player_items_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_items"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <!-- Row 1 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_row="1"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="1"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="1"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_1_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_1_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_1_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_1_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="1"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+
+                <!-- Row 2 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="2"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="2"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="2"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_2_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_2_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_2_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_2_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="2"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+                <!-- Row 3 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="3"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="3"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="3"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_3_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_3_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_3_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_3_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="3"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+                <!-- Row 4 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="4"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="4"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="4"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_4_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_4_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_4_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_4_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="4"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+                <!-- Row 5 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="5"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="5"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="5"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_5_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_5_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_5_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_5_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="5"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+            </GridLayout>
+
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/dire_players_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Dire - Overview"
+            android:textSize="16sp"
+            android:textColor="@color/colorRed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/radiant_stats_scroll"/>
+        <!-- Dire Side !-->
+        <HorizontalScrollView
+            android:id="@+id/dire_stats_scroll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="1dp"
+            android:scrollbarThumbHorizontal="@drawable/custom_scrollbar2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dire_players_label">
+
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryMidDark"
+                android:columnCount="16"
+                android:elevation="4dp"
+                android:rowCount="7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_label"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_level"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_kill"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_death"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_assist"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_gpm"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_xpm"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_lh"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_dn"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_hd"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_hh"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_td"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_gold"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_items"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <!-- Row 1 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_row="1"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="1"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="1"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_6_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_6_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_6_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_6_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="1"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="1"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+
+                <!-- Row 2 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="2"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="2"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="2"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_7_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_7_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_7_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_7_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="2"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="2"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+                <!-- Row 3 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="3"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="3"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="3"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_8_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_8_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_8_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_8_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="3"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="3"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+                <!-- Row 4 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="4"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="4"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="4"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_9_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_9_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_9_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_9_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="4"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="4"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+                <!-- Row 5 !-->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="22.5dp"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_row="5"
+                    android:src="@drawable/abaddon_full" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_row="5"
+                    android:text="Abbadon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_mmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|start"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_row="5"
+                    android:text="2500"
+                    android:textColor="@color/colorGray"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_lvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="24"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- KDA !-->
+                <TextView
+                    android:id="@+id/match_details_player_10_kill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="12"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_death"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="3"
+                    android:textColor="@color/colorRed"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="30"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- GPM XPM LH DN !-->
+                <TextView
+                    android:id="@+id/match_details_player_10_GPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="432"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_XPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="532"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_LH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="232"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_DN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="10"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="31"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+                <!-- HD  HH TD G !-->
+                <TextView
+                    android:id="@+id/match_details_player_10_HD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="11"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="13.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_HH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="12"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="3.2k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_TD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="13"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="5.3k"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/match_details_player_10_G"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="14"
+                    android:layout_gravity="center|start"
+                    android:layout_margin="4dp"
+                    android:layout_row="5"
+                    android:text="23.3k"
+                    android:textColor="@color/colorGold"
+                    android:textSize="12sp" />
+                <!--Items !-->
+                <GridLayout
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
+                    android:layout_column="15"
+                    android:layout_gravity="center|start"
+                    android:layout_row="5"
+                    android:columnCount="3"
+                    android:rowCount="2" />
+
+            </GridLayout>
+        </HorizontalScrollView>
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/match_details_overview_graph"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:elevation="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dire_stats_scroll" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -1,5 +1,6 @@
 package com.buncolak.opendota;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Build;
@@ -7,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +34,8 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
         void onMatchClick(long matchId);
     }
 
-    public PlayerMatchAdapter(Context context,Cursor cursor, MatchClickListener listener){
+    public PlayerMatchAdapter(Context context,Cursor cursor,
+                              MatchClickListener listener){
         mCursor = cursor;
         matchClickListener = listener;
         mContext = context;
@@ -46,7 +49,6 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
         View itemView = inflater.inflate(layoutID,parent,false);
 
         return new PlayerMatchViewHolder(itemView);
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -127,7 +129,7 @@ public class PlayerMatchAdapter extends RecyclerView.Adapter<PlayerMatchAdapter.
             this.notifyDataSetChanged();
     }
 
-    class PlayerMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class PlayerMatchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView matchId, heroName, playerSide, gameMode, duration, dateTv, winTv;
         TextView kills,deaths,assists;
