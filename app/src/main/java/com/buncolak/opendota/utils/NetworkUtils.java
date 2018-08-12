@@ -77,6 +77,21 @@ public class NetworkUtils {
         }
     }
 
+    public static URL buildUrlMatchDetails(String matchID) {
+        Uri uri = Uri.parse(BASE_API_URL).buildUpon()
+                .appendPath(PATH_MATCHES)
+                .appendPath(matchID)
+                .build();
+        try{
+            URL url = new URL(uri.toString());
+            Log.d(TAG,"URL success:" +url.toString());
+            return url;
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     /*
      * This method gets the data from the given URL and returns the JSON data in String form
      */

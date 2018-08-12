@@ -71,5 +71,10 @@ public class ODJsonParser {
         editor.apply();
     }
 
+    public static JSONObject getMatchPlayerJson(String matchJson, int userIndex) throws JSONException {
+        JSONObject match = new JSONObject(matchJson);
+        return match.getJSONArray("players").getJSONObject(userIndex);
+    }
+
 
 }

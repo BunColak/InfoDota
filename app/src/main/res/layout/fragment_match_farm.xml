@@ -1,6 +1,1706 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_match_farm_radiant_unit_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/match_farm_radiant_unit"
+            android:textColor="@color/colorGreen"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_radiant_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_match_farm_radiant_unit_label">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryMidDark"
+                android:columnCount="10"
+                android:padding="8dp"
+                android:rowCount="7">
+
+                <!-- Labels !-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_label"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_heroes"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_creeps"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_neutrals"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_ancients"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_towers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_couriers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_roshan"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_observers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_necronomicon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <!-- Player 1 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="1">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_1"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_1"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_1"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_1"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_1" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_1"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_1"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_1"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_1"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_1"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_1"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_1"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_1"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_1"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 2 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="2">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_2"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_2"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_2"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_2"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_2" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_2"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_2"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_2"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_2"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_2"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_2"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_2"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_2"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_2"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 3 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="3">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_3"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_3"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_3"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_3"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_3" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_3"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_3"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_3"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_3"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_3"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_3"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_3"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_3"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_3"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 4 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="4">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_4"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_4"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_4"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_4"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_4"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_4" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_4"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_4"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_4"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_4"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_4"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_4"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_4"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_4"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_4"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 5 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="5">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_5"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_5"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_5"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_5"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_5"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_5" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_5"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_5"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_5"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_5"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_5"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_5"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_5"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_5"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_5"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+            </GridLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tv_match_farm_dire_unit_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/match_farm_dire_unit"
+            android:textColor="@color/colorRed"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hsv_radiant_unit" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_dire_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_match_farm_dire_unit_label">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryMidDark"
+                android:columnCount="10"
+                android:padding="8dp"
+                android:rowCount="7">
+
+                <!-- Labels !-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_details_player_label"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_heroes"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_creeps"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="3"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_neutrals"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_ancients"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="5"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_towers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="6"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_couriers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="7"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_roshan"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="8"
+                    android:layout_marginEnd="6dp"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_observers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="9"
+                    android:layout_row="0"
+                    android:text="@string/match_farm_necronomicon"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <!-- Player 1 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="1">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_6"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_6"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_6"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_6"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_6"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_6" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_6"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_6"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_6"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_6"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_6"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_6"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_6"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_6"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_6"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 2 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="2">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_7"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_7"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_7"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_7"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_7"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_7" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_7"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_7"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_7"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_7"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_7"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_7"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_7"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_7"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_7"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 3 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="3">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_8"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_8"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_8"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_8"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_8"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_8" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_8"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_8"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_8"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_8"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_8"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_8"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_8"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_8"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_8"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="3"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 4 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="4">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_9"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_9"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_9"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_9"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_9"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_9" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_9"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_9"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_9"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_9"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_9"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_9"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_9"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_9"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_9"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="4"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <!-- Player 5 !-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginTop="4dp"
+                    android:layout_row="5">
+
+                    <ImageView
+                        android:id="@+id/img_match_farm_player_10"
+                        android:layout_width="40dp"
+                        android:layout_height="22.5dp"
+                        android:src="@drawable/dragon_knight_full"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_name_player_10"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="BunC"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_10"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_match_farm_mmr_player_10"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:text="TBD"
+                        android:textColor="@color/colorGray"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@id/img_match_farm_player_10"
+                        app:layout_constraintTop_toBottomOf="@id/tv_match_farm_name_player_10" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_match_farm_heroes_player_10"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="1"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_creeps_player_10"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="2"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_neutrals_player_10"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="3"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_ancients_player_10"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="4"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_towers_player_10"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="5"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_couriers_player_10"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="6"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_roshan_player_10"
+                    android:layout_width="45dp"
+                    android:layout_height="35dp"
+                    android:layout_column="7"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_observers_player_10"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:layout_column="8"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_match_farm_necronomicon_player_10"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_column="9"
+                    android:layout_row="5"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="4"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+
+            </GridLayout>
+        </HorizontalScrollView>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

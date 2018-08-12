@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OpenDota</string>
+    <string name="app_name">InfoDota</string>
     <string name="winrate">WINRATE</string>
     <string name="wins">WINS</string>
     <string name="losses">LOSSES</string>
@@ -33,6 +33,7 @@
     <string name="menu_user_info">User Info</string>
     <string name="title_activity_match_details">Match</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="kda_label">KDA</string>
 
     <string name="intent_extra_match_id">match_id</string>
 
@@ -50,5 +51,24 @@
     <string name="match_details_player_td"><u>TD</u></string>
     <string name="match_details_player_gold"><u>GOLD</u></string>
     <string name="match_details_player_items"><u>ITEMS</u></string>
+    <string name="match_details_player_backpack"><u>BACKPACK</u></string>
+
+    <string name="kills">Kills</string>
+    <string name="deaths">Deaths</string>
+    <string name="match_farm_radiant_unit">Radiant - Unit Kills</string>
+    <string name="match_farm_dire_unit">Dire - Unit Kills</string>
+    <string name="match_farm_heroes"><u>HEROES</u></string>
+    <string name="match_farm_neutrals"><u>NEUTRALS</u></string>
+    <string name="match_farm_creeps"><u>CREEPS</u></string>
+    <string name="match_farm_ancients"><u>ANCIENTS</u></string>
+    <string name="match_farm_towers"><u>TOWERS</u></string>
+    <string name="match_farm_couriers"><u>COURIERS</u></string>
+    <string name="match_farm_roshan"><u>ROSHAN</u></string>
+    <string name="match_farm_observers"><u>OBSERVERS</u></string>
+    <string name="match_farm_necronomicon"><u>NECRONOMICON</u></string>
+
+    <string name="radiant_adv">Radiant Advantage</string>
+    <string name="gold">Gold</string>
+    <string name="last_hits">Last Hits</string>
 
 </resources>

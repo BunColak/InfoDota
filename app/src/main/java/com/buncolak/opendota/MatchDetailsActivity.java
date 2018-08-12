@@ -1,6 +1,7 @@
 package com.buncolak.opendota;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -22,25 +23,23 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.buncolak.opendota.tab_fragments.ChatFragment;
+import com.buncolak.opendota.tab_fragments.CombatFragment;
+import com.buncolak.opendota.tab_fragments.FarmFragment;
+import com.buncolak.opendota.tab_fragments.GraphsFragment;
 import com.buncolak.opendota.tab_fragments.OverviewFragment;
+import com.buncolak.opendota.utils.NetworkUtils;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class MatchDetailsActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
-    public long matchId;
+    public static long matchId;
+    public static String matchJson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,23 +47,14 @@ public class MatchDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_match_details);
 
         Intent intent = getIntent();
-        if (intent.hasExtra(getString(R.string.intent_extra_match_id))){
-            matchId = intent.getLongExtra((getString(R.string.intent_extra_match_id)),0);
+        if (intent.hasExtra(getString(R.string.intent_extra_match_id))) {
+            matchId = intent.getLongExtra((getString(R.string.intent_extra_match_id)), 0);
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        new GetMatchDetails().execute();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -95,41 +85,6 @@ public class MatchDetailsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-
-    public static class PlaceholderFragment extends Fragment {
-
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_match_details, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -140,18 +95,26 @@ public class MatchDetailsActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            switch (position){
+            switch (position) {
                 case 0:
                     return OverviewFragment.newInstance(matchId);
+                case 1:
+                    return new CombatFragment();
+                case 2:
+                    return new FarmFragment();
+                case 3:
+                    return new GraphsFragment();
+                case 4:
+                    return new ChatFragment();
                 default:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return null;
             }
         }
 
         @Override
         public int getCount() {
-            // Show 6 total pages.
-            return 6;
+            // Show 5 total pages.
+            return 5;
         }
 
         @Override
@@ -164,13 +127,41 @@ public class MatchDetailsActivity extends AppCompatActivity {
                 case 2:
                     return "Farm";
                 case 3:
-                    return "Purchases";
-                case 4:
                     return "Graphs";
-                case 5:
+                case 4:
                     return "Chat";
             }
             return null;
+        }
+    }
+
+    class GetMatchDetails extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            URL matchDetailUrl = NetworkUtils.buildUrlMatchDetails(String.valueOf(matchId));
+            try {
+                matchJson = NetworkUtils.getResponseFromHttpUrl(matchDetailUrl);
+                return matchJson;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            // Create the adapter that will return a fragment for each of the three
+            // primary sections of the activity.
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            tabLayout.setupWithViewPager(mViewPager);
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         }
     }
 }

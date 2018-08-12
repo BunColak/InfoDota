@@ -22,7 +22,10 @@
         <activity
             android:name=".MatchDetailsActivity"
             android:label="@string/title_activity_match_details"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".LoginActivity">
+
+        </activity>
     </application>
 
 </manifest>

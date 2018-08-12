@@ -18,10 +18,14 @@
     <color name="colorRed">#ff4c49</color>
     <color name="colorGold">#FFD700</color>
     <color name="colorAccent">#1a2b3d</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorPurple">#6f2f7d</color>
+    <color name="colorSilver">#727272</color>
+    <color name="colorOrange">#e37a38</color>
+    <color name="colorBlue">#161b99</color>
+    <color name="colorTeal">#419352</color>
 
     <color name="colorDivider">#26ffffff</color>
-
-
 
 
 </resources>
