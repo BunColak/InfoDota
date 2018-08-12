@@ -24,6 +24,7 @@ public class NetworkUtils {
     private static final String BASE_API_URL = "https://api.opendota.com/api";
     private static final String PATH_PLAYER = "players";
     private static final String PATH_MATCHES = "matches";
+    private static final String PATH_RECENT_MATCHES = "recentMatches";
     private static final String PATH_WIN_LOSS = "wl";
 
 
@@ -34,7 +35,7 @@ public class NetworkUtils {
         Uri uri = Uri.parse(BASE_API_URL).buildUpon()
                 .appendPath(PATH_PLAYER)
                 .appendPath(playerID)
-                .appendPath(PATH_MATCHES).appendQueryParameter("limit","20").build();
+                .appendPath(PATH_RECENT_MATCHES).appendQueryParameter("limit","20").build();
         try{
             URL url = new URL(uri.toString());
             Log.d(TAG,"URL success:" +url.toString());

@@ -51,6 +51,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.NumberFormat;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>,
         SharedPreferences.OnSharedPreferenceChangeListener, PlayerMatchAdapter.MatchClickListener {
 
@@ -60,29 +63,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     Cursor cursor = null;
     LoaderManager.LoaderCallbacks<String> callbacks;
 
-    RecyclerView playerMatchesRV;
+    @BindView(R.id.playerMatchesRV) RecyclerView playerMatchesRV;
     PlayerMatchAdapter playerMatchAdapter;
-    TextView tv_user_name, tv_wins, tv_losses, tv_winrate;
-    ImageView img_user_profile;
+    @BindView(R.id.tv_user_name) TextView tv_user_name;
+    @BindView(R.id.tv_wins_value) TextView tv_wins;
+    @BindView(R.id.tv_losses_value) TextView tv_losses;
+    @BindView(R.id.tv_winrate_value) TextView tv_winrate;
+    @BindView(R.id.img_user_profile) ImageView img_user_profile;
+    @BindView(R.id.srl_main) SwipeRefreshLayout mSwipeRefresher;
+    @BindView(R.id.my_toolbar) Toolbar toolbar;
     String userID;
-    CollapsingToolbarLayout ctl_main;
-
-    SwipeRefreshLayout mSwipeRefresher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        tv_user_name = findViewById(R.id.tv_user_name);
-        tv_wins = findViewById(R.id.tv_wins_value);
-        tv_losses = findViewById(R.id.tv_losses_value);
-        tv_winrate = findViewById(R.id.tv_winrate_value);
-        img_user_profile = findViewById(R.id.img_user_profile);
-        mSwipeRefresher = findViewById(R.id.srl_main);
-
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("InfoDota");
 
@@ -92,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         cursor = getAllMatches();
 
         playerMatchAdapter = new PlayerMatchAdapter(this, cursor, this);
-        playerMatchesRV = findViewById(R.id.playerMatchesRV);
         playerMatchesRV.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

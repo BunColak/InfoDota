@@ -240,7 +240,7 @@ public class CombatFragment extends Fragment {
         for (int i = 0; i < 10; i++) {
             try {
                 playerJsons[i] = ODJsonParser.getMatchPlayerJson(s, i);
-                heroes[i] = HeroValues.hero_npc_names[playerJsons[i].getInt("hero_id")];
+                heroes[i] = HeroValues.hero_npc_names.get(playerJsons[i].getInt("hero_id"));
                 img_heroes[i].setImageResource(HeroValues.heroIma[playerJsons[i].getInt("hero_id")]);
                 img_heroes_damage[i].setImageResource(HeroValues.heroIma[playerJsons[i].getInt("hero_id")]);
             } catch (JSONException e) {

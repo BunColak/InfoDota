@@ -23,7 +23,9 @@
     <color name="colorSilver">#727272</color>
     <color name="colorOrange">#e37a38</color>
     <color name="colorBlue">#161b99</color>
-    <color name="colorTeal">#419352</color>
+    <color name="colorTeal">#66ffbf</color>
+    <color name="colorMustard">#a1b447</color>
+    <color name="colorBrown">#a46900</color>
 
     <color name="colorDivider">#26ffffff</color>
 

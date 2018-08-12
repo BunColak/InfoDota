@@ -76,16 +76,16 @@ public class GraphsFragment extends Fragment {
             DataPoint[][] player_gold = new DataPoint[10][];
             DataPoint[][] player_lh = new DataPoint[10][];
             int[] player_colors = new int[]{
-                    getResources().getColor(R.color.colorWhite),
-                    getResources().getColor(R.color.colorSecondary),
-                    getResources().getColor(R.color.colorGold),
-                    getResources().getColor(R.color.colorGreen),
-                    getResources().getColor(R.color.colorRed),
-                    getResources().getColor(R.color.colorPurple),
-                    getResources().getColor(R.color.colorSilver),
-                    getResources().getColor(R.color.colorOrange),
                     getResources().getColor(R.color.colorBlue),
-                    getResources().getColor(R.color.colorTeal)
+                    getResources().getColor(R.color.colorTeal),
+                    getResources().getColor(R.color.colorPurple),
+                    getResources().getColor(R.color.colorGold),
+                    getResources().getColor(R.color.colorOrange),
+                    getResources().getColor(R.color.colorPurple),
+                    getResources().getColor(R.color.colorMustard),
+                    getResources().getColor(R.color.colorSecondary),
+                    getResources().getColor(R.color.colorGreen),
+                    getResources().getColor(R.color.colorBrown)
             };
 
             int maxLh = 0, minLh = 0;

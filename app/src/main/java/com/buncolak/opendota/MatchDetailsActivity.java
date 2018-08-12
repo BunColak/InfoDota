@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.buncolak.opendota.tab_fragments.ChatFragment;
@@ -33,6 +34,9 @@ import com.buncolak.opendota.utils.NetworkUtils;
 import java.io.IOException;
 import java.net.URL;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MatchDetailsActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -40,18 +44,20 @@ public class MatchDetailsActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     public static long matchId;
     public static String matchJson;
+    @BindView(R.id.pb_match_details) ProgressBar pb_match_details;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_details);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         if (intent.hasExtra(getString(R.string.intent_extra_match_id))) {
             matchId = intent.getLongExtra((getString(R.string.intent_extra_match_id)), 0);
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         new GetMatchDetails().execute();
@@ -69,9 +75,6 @@ public class MatchDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -138,6 +141,12 @@ public class MatchDetailsActivity extends AppCompatActivity {
     class GetMatchDetails extends AsyncTask<String, Void, String> {
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pb_match_details.setVisibility(View.VISIBLE);
+        }
+
+        @Override
         protected String doInBackground(String... strings) {
             URL matchDetailUrl = NetworkUtils.buildUrlMatchDetails(String.valueOf(matchId));
             try {
@@ -153,13 +162,14 @@ public class MatchDetailsActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             // Create the adapter that will return a fragment for each of the three
             // primary sections of the activity.
+            pb_match_details.setVisibility(View.INVISIBLE);
             mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
             // Set up the ViewPager with the sections adapter.
-            mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager = findViewById(R.id.container);
             mViewPager.setAdapter(mSectionsPagerAdapter);
 
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            TabLayout tabLayout = findViewById(R.id.tabs);
             tabLayout.setupWithViewPager(mViewPager);
             tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         }

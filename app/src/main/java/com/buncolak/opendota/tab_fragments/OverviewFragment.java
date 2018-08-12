@@ -42,7 +42,6 @@ public class OverviewFragment extends Fragment {
     ImageView[] img_player_heroes;
     ImageView[][] img_player_items, img_player_backpacks;
     TextView tv_radiant_score, tv_dire_score, tv_win_status, tv_duration;
-    ProgressBar pb_match_details;
     ConstraintLayout cl_match_details;
 
     public OverviewFragment() {
@@ -71,7 +70,6 @@ public class OverviewFragment extends Fragment {
         tv_radiant_score = rootView.findViewById(R.id.tv_match_details_radiant_score);
         tv_duration = rootView.findViewById(R.id.tv_match_details_duration);
         tv_win_status = rootView.findViewById(R.id.tv_match_win_side);
-        pb_match_details = rootView.findViewById(R.id.pb_match_details);
         cl_match_details = rootView.findViewById(R.id.cl_match_details);
 
         tv_player_names = new TextView[10];
@@ -511,7 +509,6 @@ public class OverviewFragment extends Fragment {
                 img_player_backpacks[i][2].setImageResource(ItemValues.ItemImages[playerJsons[i].getInt("backpack_2")]);
 
                 cl_match_details.setVisibility(View.VISIBLE);
-                pb_match_details.setVisibility(View.INVISIBLE);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
