@@ -9,12 +9,15 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +34,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.buncolak.opendota.data.MatchesDBContract;
 import com.buncolak.opendota.data.UserDBHelper;
@@ -53,6 +57,7 @@ import java.text.NumberFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>,
         SharedPreferences.OnSharedPreferenceChangeListener, PlayerMatchAdapter.MatchClickListener {
@@ -63,15 +68,30 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     Cursor cursor = null;
     LoaderManager.LoaderCallbacks<String> callbacks;
 
-    @BindView(R.id.playerMatchesRV) RecyclerView playerMatchesRV;
+    @BindView(R.id.playerMatchesRV)
+    RecyclerView playerMatchesRV;
     PlayerMatchAdapter playerMatchAdapter;
-    @BindView(R.id.tv_user_name) TextView tv_user_name;
-    @BindView(R.id.tv_wins_value) TextView tv_wins;
-    @BindView(R.id.tv_losses_value) TextView tv_losses;
-    @BindView(R.id.tv_winrate_value) TextView tv_winrate;
-    @BindView(R.id.img_user_profile) ImageView img_user_profile;
-    @BindView(R.id.srl_main) SwipeRefreshLayout mSwipeRefresher;
-    @BindView(R.id.my_toolbar) Toolbar toolbar;
+    @BindView(R.id.tv_user_name)
+    TextView tv_user_name;
+    @BindView(R.id.tv_wins_value)
+    TextView tv_wins;
+    @BindView(R.id.tv_losses_value)
+    TextView tv_losses;
+    @BindView(R.id.tv_winrate_value)
+    TextView tv_winrate;
+    @BindView(R.id.img_user_profile)
+    ImageView img_user_profile;
+    @BindView(R.id.srl_main)
+    SwipeRefreshLayout mSwipeRefresher;
+    @BindView(R.id.my_toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.nav_view)
+    NavigationView nav_view;
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer_layout;
+    TextView tv_user_name_nav;
+    CircleImageView civ_user_image;
     String userID;
 
     @Override
@@ -80,6 +100,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        if (PreferenceManager.getDefaultSharedPreferences(MainActivity.this).
+                getString(getString(R.string.pref_user_id_key), "0").equals("0")) {
+            startActivityForResult(new Intent(this, LoginActivity.class), 1);
+        }
+        tv_user_name_nav = nav_view.getHeaderView(0).findViewById(R.id.tv_user_name_nav);
+        civ_user_image = nav_view.getHeaderView(0).findViewById(R.id.civ_user_image);
 
         setSupportActionBar(toolbar);
         toolbar.setTitle("InfoDota");
@@ -105,13 +132,47 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onRefresh() {
                 userID = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).
-                        getString(getString(R.string.pref_user_id_key), getString(R.string.pref_user_id_def));
+                        getString(getString(R.string.pref_user_id_key), "0");
                 getSupportLoaderManager().restartLoader(LOADER_ID, bundle, callbacks);
                 loadPlayerInfo();
             }
         });
 
+        nav_view.bringToFront();
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int selectId = item.getItemId();
+                switch (selectId) {
+                    case R.id.action_logout:
+                        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                        SharedPreferences.Editor editor = p.edit();
+                        editor.putString("user_id", "");
+                        editor.apply();
+                        Toast.makeText(MainActivity.this, "Logging out..", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.action_settings:
+                        Toast.makeText(MainActivity.this, "There are no settings this is just here like this. Don't waste your time", Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
+
         loadPlayerInfo();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            String userId = data.getStringExtra(Intent.EXTRA_TEXT);
+            SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+            SharedPreferences.Editor editor = p.edit();
+            editor.putString("user_id", userId);
+            editor.apply();
+        }
     }
 
     @Override
@@ -140,7 +201,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 try {
                     //For the implementation I am using my player ID
                     userID = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).
-                            getString(getString(R.string.pref_user_id_key), getString(R.string.pref_user_id_def));
+                            getString(getString(R.string.pref_user_id_key), "0");
+                    if (Long.parseLong(userID) > 76561197960265728L) {
+                        userID = String.valueOf(Long.parseLong(userID) - 76561197960265728L);
+                    }
                     URL playerInfoURL = NetworkUtils.buildUrlPlayerInfo(userID);
                     URL playerMatchesURL = NetworkUtils.builUrlPlayerMatches(userID);
                     URL playerWL = NetworkUtils.buildUrlPlayerWL(userID);
@@ -169,15 +233,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
+        loadPlayerInfo();
+        String[] mData = null;
         try {
-            loadPlayerInfo();
-            String[] mData = ODJsonParser.parsePlayerMatches(data);
+            mData = ODJsonParser.parsePlayerMatches(data);
             AddToDatabase(mData);
             cursor = getAllMatches();
             playerMatchAdapter.swapData(cursor);
             mSwipeRefresher.setRefreshing(false);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            Toast.makeText(this,"SteamID is wrong, please check again.",Toast.LENGTH_LONG).show();
+            startActivityForResult(new Intent(this, LoginActivity.class), 1);
         }
     }
 
@@ -206,7 +272,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             odDB.insert(MatchesDBContract.AllMatchesEntry.TABLE_NAME, null, cv);
             cv.clear();
         }
-        Log.d(TAG, "YAY!");
     }
 
     private Cursor getAllMatches() {
@@ -234,36 +299,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         String profPic = p.getString(getString(R.string.pref_user_pic_key), getString(R.string.pref_user_zero_def));
 
         tv_user_name.setText(userName);
+        tv_user_name_nav.setText(userName);
         tv_wins.setText(wins);
         tv_losses.setText(losses);
         tv_winrate.setText(String.format("%.1f", winRate) + "%");
 
         Picasso.with(MainActivity.this).load(profPic).into(img_user_profile);
+        Picasso.with(MainActivity.this).load(profPic).into(civ_user_image);
         p.registerOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int itemId = item.getItemId();
-
-        if (itemId == R.id.menu_user) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-        } else if (itemId == R.id.menu_refresh) {
-            //mSwipeRefresher.setRefreshing(true);
-            userID = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).
-                    getString(getString(R.string.pref_user_id_key), getString(R.string.pref_user_id_def));
-            getSupportLoaderManager().restartLoader(LOADER_ID, null, callbacks);
-            loadPlayerInfo();
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

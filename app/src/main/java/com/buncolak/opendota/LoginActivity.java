@@ -1,53 +1,36 @@
 package com.buncolak.opendota;
 
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Button;
+import android.widget.EditText;
 
-import net.openid.appauth.AuthState;
-import net.openid.appauth.AuthorizationException;
-import net.openid.appauth.AuthorizationRequest;
-import net.openid.appauth.AuthorizationService;
-import net.openid.appauth.AuthorizationServiceConfiguration;
-import net.openid.appauth.ResponseTypeValues;
 
-import static net.openid.appauth.AuthorizationServiceConfiguration.*;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String TAG = "asdfds";
-    private final String MY_CLIENT_ID = "buncolak.com";
+
+    @BindView(R.id.et_steamid)
+    EditText et_steamid;
+    @BindView(R.id.button_login)
+    Button button_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        ButterKnife.bind(this);
+    }
 
-        AuthorizationServiceConfiguration serviceConfig =
-                new AuthorizationServiceConfiguration(
-                        Uri.parse("https://steamcommunity.com/openid/login"), // authorization endpoint
-                        Uri.parse("https://specs.openid.net/auth/2.0/server"));
-
-        // use serviceConfiguration as needed
-        AuthorizationRequest.Builder authRequestBuilder =
-                new AuthorizationRequest.Builder(
-                        serviceConfig
-                        , MY_CLIENT_ID
-                        , ResponseTypeValues.ID_TOKEN
-                        , Uri.parse("com.buncolak.infodota"));
-
-
-        AuthorizationRequest authRequest = authRequestBuilder.build();
-        AuthorizationService authService = new AuthorizationService(this);
-
-        authService.performAuthorizationRequest(
-                authRequest,
-                PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0),
-                PendingIntent.getActivity(this, 0, new Intent(this, LoginActivity.class), 0));
+    @OnClick(R.id.button_login)
+    public void login() {
+        String userId = et_steamid.getText().toString();
+        setResult(RESULT_OK, new Intent().putExtra(Intent.EXTRA_TEXT, userId));
+        finish();
 
     }
 }

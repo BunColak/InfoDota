@@ -4,6 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="16dp"
     tools:context=".LoginActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info"
+            android:textColor="@color/colorWhite"
+            android:textAlignment="center"/>
+        <EditText
+            android:id="@+id/et_steamid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintLeft_toLeftOf="@id/tv_info"
+            android:hint="SteamId"
+            android:inputType="number"
+            android:textColorHint="@color/colorDivider"
+            android:textAlignment="center"
+            app:layout_constraintRight_toRightOf="@id/tv_info"
+            app:layout_constraintTop_toBottomOf="@id/tv_info"/>
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            app:layout_constraintLeft_toLeftOf="@id/tv_info"
+            app:layout_constraintRight_toRightOf="@id/tv_info"
+            app:layout_constraintTop_toBottomOf="@id/et_steamid"/>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

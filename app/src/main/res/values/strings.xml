@@ -14,7 +14,7 @@
 
     <!-- Strings related to Settings -->
     <string name="pref_user_id_key">user_id</string>
-    <string name="pref_user_id_def">82570497</string>
+    <string name="pref_user_id_def">76561198033764876</string>
     <string name="pref_user_wins_key">wins</string>
     <string name="pref_user_losses_key">losses</string>
     <string name="pref_user_solo_mmr_key">solo_mmr</string>
@@ -22,12 +22,10 @@
     <string name="pref_user_zero_def">0</string>
     <string name="pref_user_pic_key">prof_pic</string>
     <string name="pref_user_name_key">user_name</string>
-    <string name="title_activity_navigation__drawer_">Navigation_Drawer_Activity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_logout">Log Out</string>
+    <string name="load_more_matches">Load More Matches</string>
 
     <string name="menu_refresh">Refresh</string>
     <string name="menu_user_info">User Info</string>
@@ -66,9 +64,12 @@
     <string name="match_farm_roshan"><u>ROSHAN</u></string>
     <string name="match_farm_observers"><u>OBSERVERS</u></string>
     <string name="match_farm_necronomicon"><u>NECRONOMICON</u></string>
+    <string name="login">Login</string>
 
     <string name="radiant_adv">Radiant Advantage</string>
     <string name="gold">Gold</string>
     <string name="last_hits">Last Hits</string>
+
+    <string name="info">InfoDota is an app to track statistics about DotA 2. It uses OpenDota API and does not track or store your information. To use InfoDota please enter your SteamID which you can find on your profile URL(https://steamcommunity.com/profiles/your-user-id)</string>
 
 </resources>

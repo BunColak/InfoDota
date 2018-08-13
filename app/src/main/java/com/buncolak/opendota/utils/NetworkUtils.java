@@ -31,7 +31,7 @@ public class NetworkUtils {
     /*
      * Builds API URL for the given playerID, Steam32
      */
-    public static URL builUrlPlayerMatches(String playerID) throws MalformedURLException {
+    public static URL builUrlPlayerMatches(String playerID) {
         Uri uri = Uri.parse(BASE_API_URL).buildUpon()
                 .appendPath(PATH_PLAYER)
                 .appendPath(playerID)
@@ -47,7 +47,7 @@ public class NetworkUtils {
 
     }
 
-    public static URL buildUrlPlayerInfo(String playerID) throws MalformedURLException{
+    public static URL buildUrlPlayerInfo(String playerID) {
         Uri uri = Uri.parse(BASE_API_URL).buildUpon()
                 .appendPath(PATH_PLAYER)
                 .appendPath(playerID)
@@ -62,7 +62,7 @@ public class NetworkUtils {
         }
     }
 
-    public static URL buildUrlPlayerWL(String playerID) throws MalformedURLException{
+    public static URL buildUrlPlayerWL(String playerID) {
         Uri uri = Uri.parse(BASE_API_URL).buildUpon()
                 .appendPath(PATH_PLAYER)
                 .appendPath(playerID)
